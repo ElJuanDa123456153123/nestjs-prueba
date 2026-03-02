@@ -62,7 +62,7 @@ export class AppController {
 
   @Delete('remove/:id')
   remove(@Param('id') id: number) {
-    return this.appService.remove(id, {} as PersonModel);
+    return this.appService.remove(id);
   }
 }
 
