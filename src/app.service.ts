@@ -4,9 +4,9 @@ import { PersonModel } from './person.models';
 @Injectable()
 export class AppService {
   database: PersonModel[] = [
-    { id: 1, name: 'David', age: 30 },
-    { id: 2, name: 'Juan', age: 25 },
-    { id: 3, name: 'Maria', age: 28 },
+    { id: 1, name: 'David el terian 2.0', age: 30, gender: 'masculino' },
+    { id: 2, name: 'Mitico el terian', age: 25, gender: 'masculino' },
+    { id: 3, name: 'Jhurguen', age: 28, gender: 'masculino' },
   ];
   getHello(): string {
     return 'Hello World desde Service!';
@@ -34,6 +34,7 @@ export class AppService {
     if (person) {
       person.name = data.name;
       person.age = data.age;
+      person.gender = data.gender;
       return person;
     }
     return null;

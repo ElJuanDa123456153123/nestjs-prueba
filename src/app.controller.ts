@@ -1,6 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { PersonModel } from './person.models';
 import { AppService } from './app.service';
+import { CreatePersonDto, PersonValidationPipe } from './person.dto';
 
 @Controller('personController')
 export class AppController {
@@ -22,7 +23,7 @@ export class AppController {
   }
 
   @Post('saveBody')
-  savePerson(@Body() data1: any) {
+  savePerson(@Body(PersonValidationPipe) data1: CreatePersonDto) {
     console.log('************');
     console.log(data1);
     console.log('************');
@@ -36,7 +37,7 @@ export class AppController {
     return { age: 30 };
   }
 
-  @Get('getJuan')
+  @Get('getTerian')
   getAgeJuan() {
     const data = new PersonModel();
     data.id = 1;
@@ -51,12 +52,12 @@ export class AppController {
   }
 
   @Post('create')
-  create(@Body() data: PersonModel) {
+  create(@Body(PersonValidationPipe) data: CreatePersonDto) {
     return this.appService.create(data);
   }
 
   @Put('update/:id')
-  update(@Param('id') id: number, @Body() data: PersonModel) {
+  update(@Param('id') id: number, @Body(PersonValidationPipe) data: CreatePersonDto) {
     return this.appService.update(id, data);
   }
 
