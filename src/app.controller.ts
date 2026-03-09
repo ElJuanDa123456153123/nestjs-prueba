@@ -1,6 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { PersonModel } from './person.models';
 import { AppService } from './app.service';
+import { CreatePersonDto } from './create-person.dto';
 
 @Controller('personController')
 export class AppController {
@@ -51,12 +52,12 @@ export class AppController {
   }
 
   @Post('create')
-  create(@Body() data: PersonModel) {
+  create(@Body() data: CreatePersonDto) {
     return this.appService.create(data);
   }
 
   @Put('update/:id')
-  update(@Param('id') id: number, @Body() data: PersonModel) {
+  update(@Param('id') id: number, @Body() data: CreatePersonDto) {
     return this.appService.update(id, data);
   }
 
@@ -64,6 +65,5 @@ export class AppController {
   remove(@Param('id') id: number) {
     return this.appService.remove(id);
   }
-}
 
-//crear un crud  crear, ver eliminar, actualizar
+}

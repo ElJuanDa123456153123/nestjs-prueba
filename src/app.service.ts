@@ -1,12 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { PersonModel } from './person.models';
+import { Genero } from './person.models';
 
 @Injectable()
 export class AppService {
   database: PersonModel[] = [
-    { id: 1, name: 'David', age: 30 },
-    { id: 2, name: 'Juan', age: 25 },
-    { id: 3, name: 'Maria', age: 28 },
+    { id: 1, name: 'David', age: 30, genero: Genero.MASCULINO },
+    { id: 2, name: 'Juan', age: 25, genero: Genero.MASCULINO },
+    { id: 3, name: 'Maria', age: 28, genero: Genero.FEMENINO },
   ];
   getHello(): string {
     return 'Hello World desde Service!';
